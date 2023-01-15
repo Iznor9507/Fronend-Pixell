@@ -27,7 +27,7 @@ const PersonalAccountWindow = ({
     dispatch(getUsers())
   }, [dispatch])
   
-  const userID = useSelector((state) => state.registrationReducer.userID.id);
+  const userID = useSelector((state) => state?.registrationReducer?.userID?.id);
   const users = useSelector(state => state.registrationReducer.users)
   if(!users) {
     return 'Loading...'

@@ -22,7 +22,6 @@ const Enter = ({
     password: "",
     showPassword: false,
   });
-
   
 
   const handleEnter = () => {
@@ -35,7 +34,6 @@ const Enter = ({
   };
 
   const handleEnterAccount = () => {
-    // setEnterWindow(false);
     setAccountWindow(true);
   };
   
@@ -72,7 +70,7 @@ const Enter = ({
     if (error) {
       return <div>{error}</div>;
     }
-    console.log(error);
+ 
   };
   return (
     <div>
@@ -113,6 +111,7 @@ const Enter = ({
               <button onClick={() => handleRegistration()}>
                 Зарегистрироваться
               </button>
+              <div className={style.errors}>{error}</div>
               <button type="submit" onClick={() => handleEnterAccount()} >
                 Войти
               </button>
