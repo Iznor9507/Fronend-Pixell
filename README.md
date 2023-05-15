@@ -24,8 +24,7 @@
 - React
 - Redux-toolkit
 - React-router
-- scss
-- React Yandex Maps
+- SCSS
 - React-credit-cards
 
 ## Запуск проекта:
