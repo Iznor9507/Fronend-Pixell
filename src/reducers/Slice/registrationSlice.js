@@ -44,7 +44,6 @@ export const authSignUp = createAsyncThunk(
       if (json.error) {
         return thunkAPI.rejectWithValue(json.error);
       }
-
       return json;
     } catch (error) {
       thunkAPI.rejectWithValue(error);
@@ -70,7 +69,9 @@ export const addMoney = createAsyncThunk(
       if (json.error) {
         return thunkAPI.rejectWithValue(json.error);
       }
+
       return json;
+
     } catch (error) {
       thunkAPI.rejectWithValue(error);
     }

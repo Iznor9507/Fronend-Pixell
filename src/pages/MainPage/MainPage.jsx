@@ -8,16 +8,14 @@ const MainPage = () => {
   return (
     <>
       <div className={style.mainLeft}>
-        <div className={style.mainLeftText}>
+        <h1 className={style.mainLeftText}>
           Мы создаем мобильные игры, в которые ты играешь
-        </div>
+        </h1>
         <div className={style.moreButton}>
           <Link className={style.blockText} to="/compain">
             <p className={style.blockText}>Узнать подробнее</p>
-          </Link>
-          <div className={style.arrowMore}>
             <img src={arrow} alt="Стрелка" />
-          </div>
+          </Link>
         </div>
       </div>
       <div className={style.mainRight}>
@@ -25,10 +23,10 @@ const MainPage = () => {
         <div className={style.yellowBlockImg}>
           <img src={horse} alt="Конь" />
         </div>
-        <div className={style.mainText}>
+        <p className={style.mainText}>
           «Оригинальные идеи, качество реализации игровых механик и внимание к
           деталям интерфейса - наши основные принципы.»
-        </div>
+        </p>
       </div>
     </>
   );

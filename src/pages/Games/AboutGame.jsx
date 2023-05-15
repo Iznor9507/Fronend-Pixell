@@ -36,7 +36,13 @@ const AboutGame = () => {
     (state) => state.reviewSlice.isExistenceReview
   );
 
-  const userID = useSelector((state) => state.registrationReducer.userID.id);
+
+  const game = useSelector((state) => state.gameReducer.game).find(
+    (item) => item._id === gameId
+  );
+
+  const userID = useSelector((state) => state.registrationReducer.userID?.id);
+
 
   const handleTextPromo = () => {
     setValidPromo(promos.find((item) => item.text === promoText));

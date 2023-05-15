@@ -29,8 +29,7 @@ export const parseJwt = (token) => {
 };
 
 export const getBasket = createAsyncThunk("basket/get", async (_, thunkAPI) => {
-  //   const token = thunkAPI.getState().registration.token;
-  //   console.log(token);
+ 
   try {
     const res = await fetch("http://localhost:3001/basket/user", {
       method: "GET",
