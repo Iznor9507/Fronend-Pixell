@@ -18,15 +18,25 @@ const PersonalAccountWindow = ({
     setAccountWindow(false);
   };
 
+  const [modalShow, setModalShow] = React.useState(false);
+
   
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getUsers())
+  }, [dispatch])
   
   const userID = useSelector((state) => state?.registrationReducer?.userID?.id);
   const users = useSelector(state => state.registrationReducer.users)
-  const currentUser = users.find(item => item._id === userID)
+  if(!users) {
+    return 'Loading...'
+  }
+  const currentUser = users?.find(item => item?._id === userID)
+  console.log("USER", currentUser);
+console.log(userID);
 
-
-  const [modalShow, setModalShow] = React.useState(false);
+  
 
 
   const logout = () => {
@@ -34,9 +44,7 @@ const PersonalAccountWindow = ({
     window.location.href = "/";
   };
 
-  useEffect(() => {
-    dispatch(getUsers())
-  }, [])
+  
 
   return (
     <div>
