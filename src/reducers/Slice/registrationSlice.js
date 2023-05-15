@@ -25,11 +25,8 @@ const initialState = {
   token: localStorage.getItem("token"),
   id: localStorage.getItem("id"),
   userID: parseJwt(localStorage.getItem("token")),
-<<<<<<< HEAD
-=======
   users: []
 
->>>>>>> main
 };
 
 export const authSignUp = createAsyncThunk(
@@ -47,10 +44,7 @@ export const authSignUp = createAsyncThunk(
       if (json.error) {
         return thunkAPI.rejectWithValue(json.error);
       }
-<<<<<<< HEAD
-      console.log(json);
-      console.log({ nickName, email, usersName, password });
-=======
+
 
       return json;
     } catch (error) {
@@ -77,7 +71,7 @@ export const addMoney = createAsyncThunk(
       if (json.error) {
         return thunkAPI.rejectWithValue(json.error);
       }
->>>>>>> main
+
       return json;
     } catch (error) {
       thunkAPI.rejectWithValue(error);

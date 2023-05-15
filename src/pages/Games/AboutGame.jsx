@@ -38,7 +38,7 @@ const AboutGame = () => {
     (item) => item._id === gameId
   );
 
-  const userID = useSelector((state) => state.registrationReducer.userID.id);
+  const userID = useSelector((state) => state.registrationReducer.userID?.id);
 
   const handleTextPromo = () => {
     setValidPromo(promos.find((item) => item.text === promoText));
