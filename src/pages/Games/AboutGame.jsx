@@ -26,6 +26,8 @@ const AboutGame = () => {
 
   const promos = useSelector((state) => state.promoReducer.promo);
 
+  const game = useSelector((state) => state.gameReducer.game).find((item) => item._id === gameId);
+
   const favourites = useSelector((state) => state.favoriteReducer.favourites);
   const tokenId = useSelector((state) => state.registrationReducer.id);
 
@@ -34,11 +36,13 @@ const AboutGame = () => {
     (state) => state.reviewSlice.isExistenceReview
   );
 
+
   const game = useSelector((state) => state.gameReducer.game).find(
     (item) => item._id === gameId
   );
 
   const userID = useSelector((state) => state.registrationReducer.userID?.id);
+
 
   const handleTextPromo = () => {
     setValidPromo(promos.find((item) => item.text === promoText));
@@ -66,17 +70,18 @@ const AboutGame = () => {
     const p = Math.floor((likes / (likes + dislikes)) * 100);
 
     if (p <= 20) {
-      return "В основном отрицательные";
+      return 'В основном отрицательные';
     } else if (p <= 40) {
-      return "Отрицательные";
+      return 'Отрицательные';
     } else if (p > 40 && p <= 50) {
-      return "Средние";
+      return 'Средние';
     } else if (p > 50 && p <= 70) {
-      return "Положительные";
+      return 'Положительные';
     } else if (p > 70) {
-      return "В основном положительные";
+      return 'В основном положительные';
     }
   };
+
 
   const hasReview = game?.reviews?.find((item) => item.userId?._id === userID);
 
@@ -117,8 +122,8 @@ const AboutGame = () => {
   // console.log(promos)
   // console.log(promos.map((item) => item.text).join(""));
 
-  if (!game) {
-    return "Loading...";
+  if (!game && !hasReview) {
+    return 'Loading...';
   }
 
   return (
@@ -173,7 +178,7 @@ const AboutGame = () => {
             Добавить в корзину
           </button>
 
-      
+          <button onClick={() => addToFavorite()}>добавить в избранное</button>
         </div>
       </div>
 
@@ -286,11 +291,8 @@ const AboutGame = () => {
                       </svg>
                     )}
 
-                    <h2 className={style.user_name}>
-                      {reviewItem.userId?.nickName}
-                    </h2>
+                    <h2 className={style.user_name}>{reviewItem?.userId?.nickName}</h2>
                   </div>
-                  {/* {console.log(reviewItem.userId.usersName)} */}
                   <p className={style.text_review}>{reviewItem.text}</p>
                 </div>
               );
