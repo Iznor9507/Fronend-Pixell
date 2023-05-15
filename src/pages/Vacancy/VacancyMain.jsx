@@ -1,15 +1,15 @@
 import React from "react";
-import JobBenefits from "./JobBenefits";
+import JobBenefits from "../../components/VacancyComponents/JobBenefits/JobBenefits";
 import MainPageVacancy from "./MainPageVacancy";
-import VacancyList from "./VacancyList";
+import VacancyList from "../../components/VacancyComponents/VacancyList/VacancyList";
 
 const VacancyMain = () => {
   return (
-    <div>
+    <>
       <MainPageVacancy />
       <VacancyList />
       <JobBenefits />
-    </div>
+    </>
   );
 };
 

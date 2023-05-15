@@ -94,17 +94,11 @@ const AboutGame = () => {
     dispatch(saveGames({ gameId, tokenId }));
   };
 
- 
-
   const discountPrice = Math.floor(
     game?.price - (game?.price / 100) * promos.map((item) => item.discount)[0]
   );
   
-
   const handleAddReview = () => {
-    // dispatch(isExistence({id: game._id}));
-    // console.log("isExistenceReview", isExistenceReview);
-
     if (!hasReview) {
       dispatch(
         addReviews({ id: game._id, textReview: textReview, isGrade: isGrade })
@@ -113,10 +107,6 @@ const AboutGame = () => {
     setIsGrade(null);
     setTextReview("");
   };
-  //  console.log(game.price);
-  // console.log(promos)
-  // console.log(promos.map((item) => item.text).join(""));
-
   if (!game) {
     return "Loading...";
   }
