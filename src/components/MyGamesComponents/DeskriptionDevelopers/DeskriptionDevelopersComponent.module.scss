@@ -1,0 +1,30 @@
+.deskriptionDevelopers {
+    width: 70%;
+    height: 55%;
+    margin-top: 60px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    flex-direction: column;
+    margin-right: 20px;
+
+    .game {
+      font-size: 70px;
+    }
+
+    .text {
+      font-size: 20px;
+    }
+    .BtnOurWorks {
+      width: 150px;
+      text-align: left;
+      background-color: #ce0002;
+      color: white;
+      border: none;
+      height: 60px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      text-decoration: none;
+    }
+  }

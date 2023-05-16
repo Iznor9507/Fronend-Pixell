@@ -6,18 +6,18 @@ const OurTeam = () => {
   return (
     <div className={style.parentOurTeam}>
       <div className={style.bcgYellow}>
-        <div className={style.parentBlockInf}>
-          <div className={style.blockInf}>
-            <div className={style.blockTitleAndBtn}>
-              <h1 className={style.title}>НАША КОМАНДА</h1>
-
-              <div className={style.blockBtn}>
-                <button className={style.btnLeft}>←</button>
-                <button className={style.btnRight}>→</button>
-              </div>
-            </div>
-<OurTemsPeopleComponent styles={style}/> 
-          </div>
+        <div className={style.blockTitleAndBtn}>
+          <h1 className={style.title}>НАША КОМАНДА</h1>
+        </div>
+        <div
+          style={{
+            width: "85%",
+            height: "50%",
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <OurTemsPeopleComponent />
         </div>
       </div>
     </div>
