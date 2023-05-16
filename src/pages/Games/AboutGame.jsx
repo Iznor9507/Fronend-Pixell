@@ -37,9 +37,6 @@ const AboutGame = () => {
   );
 
 
-  const game = useSelector((state) => state.gameReducer.game).find(
-    (item) => item._id === gameId
-  );
 
   const userID = useSelector((state) => state.registrationReducer.userID?.id);
 
