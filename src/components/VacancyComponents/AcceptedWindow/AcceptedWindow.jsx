@@ -1,5 +1,5 @@
-import style from "../Vacancy/AcceptedWindow.module.scss";
-import logo from "../Vacancy/images/Group.png";
+import style from "./AcceptedWindow.module.scss";
+import logo from "../../../pages/Vacancy/images/Group.png";
 
 function AcceptedWindow({ acceptedWindow, setAcceptedWindow }) {
   const handleClickCloseWindow = () => {

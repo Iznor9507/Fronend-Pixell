@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import style from "../Vacancy/SingleVacancy.module.scss";
+import style from "./SingleVacancy.module.scss";
 
 function SingleVacancy({ item }) {
   return (

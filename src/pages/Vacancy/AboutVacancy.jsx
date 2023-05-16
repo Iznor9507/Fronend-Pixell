@@ -1,76 +1,24 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { fetchVacancy } from "../../reducers/Slice/vacancySlice";
 import style from "../Vacancy/AboutVacancy.module.scss";
 import { Link } from "react-router-dom";
-import AcceptedWindow from "./AcceptedWindow";
-import { postResponse } from "../../reducers/Slice/responseSlice";
+import AcceptedWindow from "../../components/VacancyComponents/AcceptedWindow/AcceptedWindow";
+import { useAboutVacancyHook } from "../../MyHooks/VacancyHooks/AboutVacancyook";
 
 const AboutVacancy = () => {
-  const [acceptedWindow, setAcceptedWindow] = useState(false);
-  const [privacyPolicy, setPrivacyPolicy] = useState(false);
+  const {
+    acceptedWindow,
+    setAcceptedWindow,
+    hundleJobAdditionalComment,
+    hundleJobEmail,
+    hundleJobFullName,
+    vacancy,
+    handleChangeButton,
+    jobApplicationForm,
+    privacyPolicy,
+    hundleJobPhoneNumber,
+    handleClickWindow,
+    handlePrivacyPolicy,
+  } = useAboutVacancyHook();
 
-  const [jobApplicationForm, setJobApplicationForm] = useState({
-    fullName: "",
-    email: "",
-    phoneNumber: "",
-    additionalComment: "",
-  });
-
-  const dispatch = useDispatch();
-
-  const { id } = useParams();
-
-  const vacancy = useSelector((state) => state.vacancySlice.vacancy).find(
-    (item) => item._id === id
-  );
-
-  useEffect(() => {
-    dispatch(fetchVacancy());
-  }, [dispatch]);
-
-  const hundleJobFullName = (e) => {
-    setJobApplicationForm({ ...jobApplicationForm, fullName: e.target.value });
-  };
-  const hundleJobEmail = (e) => {
-    setJobApplicationForm({ ...jobApplicationForm, email: e.target.value });
-  };
-  const hundleJobPhoneNumber = (e) => {
-    setJobApplicationForm({
-      ...jobApplicationForm,
-      phoneNumber: e.target.value,
-    });
-  };
-  const hundleJobAdditionalComment = (e) => {
-    setJobApplicationForm({
-      ...jobApplicationForm,
-      additionalComment: e.target.value,
-    });
-  };
-
-  const handleChangeButton = (e) => {
-    e.preventDefault();
-    dispatch(postResponse({ ...jobApplicationForm }));
-    setJobApplicationForm({
-      fullName: "",
-      email: "",
-      phoneNumber: "",
-      additionalComment: "",
-    });
-  };
-
-  const handlePrivacyPolicy = () => {
-    setPrivacyPolicy(!privacyPolicy);
-  };
-
-  const handleClickWindow = () => {
-    setAcceptedWindow(!acceptedWindow);
-  };
-
-  if (!vacancy) {
-    return "";
-  }
   return (
     <div className={style.mainDiv}>
       <div>
@@ -101,29 +49,29 @@ const AboutVacancy = () => {
               </svg>
             </button>
           </Link>
-          <h1 className={style.title}>{vacancy.name}</h1> <br />
-          <div className={style.tasksWork}>{vacancy.tasksWork}</div> <br />
+          <h1 className={style.title}>{vacancy?.name}</h1> <br />
+          <div className={style.tasksWork}>{vacancy?.tasksWork}</div> <br />
           <div className={style.vacancyDescription}>
             <b className={style.vacancyDescriptionTitle}>
               ЧЕМ ПРЕДСТОИТ ЗАНИМАТЬСЯ
             </b>
             <br />
-            {vacancy.vacancyDescription}
+            {vacancy?.vacancyDescription}
           </div>{" "}
           <br />
           <div className={style.keyRequirements}>
             <b className={style.keyRequirementsTitle}>КЛЮЧЕВЫЕ ТРЕБОВАНИЯ</b>
             <br />
-            {vacancy.keyRequirements}
+            {vacancy?.keyRequirements}
           </div>{" "}
           <br />
           <div className={style.weOffer}>
             <b className={style.weOfferTitle}>МЫ ПРЕДЛАГАЕМ</b>
             <br />
-            {vacancy.weOffer}
+            {vacancy?.weOffer}
           </div>{" "}
           <br />
-          <div className={style.wage}>{vacancy.wage}₽</div>
+          <div className={style.wage}>{vacancy?.wage}₽</div>
         </div>
       </div>
 
@@ -141,7 +89,7 @@ const AboutVacancy = () => {
             <div className={style.blockInp1}>
               <div className={style.inp1}>
                 <input
-                  value={jobApplicationForm.fullName}
+                  value={jobApplicationForm?.fullName}
                   type="text"
                   onChange={hundleJobFullName}
                   placeholder="ФИО"
@@ -150,7 +98,7 @@ const AboutVacancy = () => {
 
               <div className={style.inp1}>
                 <input
-                  value={jobApplicationForm.email}
+                  value={jobApplicationForm?.email}
                   onChange={hundleJobEmail}
                   type="email"
                   placeholder="Электронная почта"
@@ -159,7 +107,7 @@ const AboutVacancy = () => {
 
               <div className={style.inp1}>
                 <input
-                  value={jobApplicationForm.phoneNumber}
+                  value={jobApplicationForm?.phoneNumber}
                   type="text"
                   onChange={hundleJobPhoneNumber}
                   placeholder="Телефон"
@@ -175,9 +123,16 @@ const AboutVacancy = () => {
                   rel="stylesheet"
                 />
                 <label className={style.inpScrepka} for="file">
-                  <i class="fa fa-paperclip"></i>
+                  <i className="fa fa-paperclip"></i>
                 </label>
-                <input placeholder="Прикрепить резюме" id="file" name="file" type="file" multiple hidden />
+                <input
+                  placeholder="Прикрепить резюме"
+                  id="file"
+                  name="file"
+                  type="file"
+                  multiple
+                  hidden
+                />
               </div>
 
               <div className={style.inp22}>
@@ -187,14 +142,14 @@ const AboutVacancy = () => {
                   rel="stylesheet"
                 />
                 <label className={style.inpScrepka} for="file">
-                  <i class="fa fa-paperclip"></i>
+                  <i className="fa fa-paperclip"></i>
                 </label>
                 <input id="file" name="file" type="file" multiple hidden />
               </div>
 
               <div className={style.inp2}>
                 <input
-                  value={jobApplicationForm.additionalComment}
+                  value={jobApplicationForm?.additionalComment}
                   type="text"
                   onChange={hundleJobAdditionalComment}
                   placeholder="Дополнительный комментарий"
@@ -205,7 +160,12 @@ const AboutVacancy = () => {
             <div className={style.lastDiv}>
               <button
                 className={style.btnSend}
-                disabled={!privacyPolicy || !jobApplicationForm.email || !jobApplicationForm.fullName || !jobApplicationForm.phoneNumber }
+                disabled={
+                  !privacyPolicy ||
+                  !jobApplicationForm.email ||
+                  !jobApplicationForm.fullName ||
+                  !jobApplicationForm.phoneNumber
+                }
                 onClick={() => handleClickWindow()}
               >
                 ОТПРАВИТЬ

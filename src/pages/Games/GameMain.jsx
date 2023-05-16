@@ -8,7 +8,6 @@ const GamePages = () => {
       <div id="mainPage">
         <MainPageGame />
       </div>
-
       <div id="gameList">
         <GamesList />
       </div>
