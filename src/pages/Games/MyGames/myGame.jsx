@@ -18,6 +18,10 @@ const MyFavoritesGames = () => {
     dispatch(fetchFavorite());
   }, [dispatch]);
 
+
+  
+
+
   return (
     <div className={style.LastProjects}>
       <div className={style.firstBlockData}>
