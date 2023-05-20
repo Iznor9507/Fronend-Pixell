@@ -8,6 +8,27 @@ import photo3 from "./photos/game3.png";
 import arrow from "./photos/Arrow 3.svg";
 
 const LastProjects = () => {
+  const recommendedGames = [
+    {
+      photo: photo1,
+      name: "Escape Masters",
+      titleCard: "Совершите идеальный побег",
+      text: "Спаси напарников, собери сокровища и прокопай путь к свободе, но опасайся ловушек, людей и Адама прочих усатых человеков",
+    },
+    {
+      photo: photo2,
+      name: "DESIGN MASTERS",
+      titleCard: "Станьте дизайнером интерьеров!",
+      text: " Проходите уровни матч-3, создавайте собственные дизайны и интерьеры, следите за историей и знакомьтесь с персонажами.",
+    },
+    {
+      photo: photo3,
+      name: "Perfect Makeup 3D",
+      titleCard: "Добро пожаловать в мир макияжа!",
+      text: "  Выбирайте кисти, цвета и оттенки губной помады, подводки для глаз, чтобы добиться превосходного результата.",
+    },
+  ];
+
   return (
     <div className={style.LastProjects}>
       <div className={style.title}>
@@ -24,54 +45,23 @@ const LastProjects = () => {
       {/* end */}
 
       <div className={style.firstBlockData}>
-        <div className={style.firstBlock}>
-          <img className={style.photo} src={photo1} alt="d" />
-          <div className={style.description}>
-            <p className={style.name}>Escape Masters</p>
-            <p className={style.titleCard}>Совершите идеальный побег!</p>
-            <p className={style.text}>
-              Спаси напарников, собери сокровища и прокопай путь к свободе, но
-              опасайся ловушек, людей и Адама прочих усатых человеков
-            </p>
-            <button className={style.onebtn}>
-              {" "}
-              Подробнее
-              <img className={style.arrow} src={arrow} alt="f" />
-            </button>
-          </div>
-        </div>
-        <div className={style.firstBlock}>
-          <img className={style.photo} src={photo2} alt="d" />
-          <div className={style.description}>
-            <p className={style.name}>DESIGN MASTERS</p>
-            <p className={style.titleCard}>Станьте дизайнером интерьеров!</p>
-            <p className={style.text}>
-              Проходите уровни матч-3, создавайте собственные дизайны и
-              интерьеры, следите за историей и знакомьтесь с персонажами.
-            </p>
-            <button className={style.btnInformation}>
-              {" "}
-              Подробнее
-              <img className={style.arrow} src={arrow} alt="f" />
-            </button>
-          </div>
-        </div>
-        <div className={style.firstBlock}>
-          <img className={style.photo} src={photo3} alt="d" />
-          <div className={style.description}>
-            <p className={style.name}>Perfect Makeup 3D</p>
-            <p className={style.titleCard}>Добро пожаловать в мир макияжа!</p>
-            <p className={style.text}>
-              Выбирайте кисти, цвета и оттенки губной помады, подводки для глаз,
-              чтобы добиться превосходного результата.
-            </p>
-            <button className={style.btnInformation}>
-              {" "}
-              Подробнее
-              <img className={style.arrowss} src={arrow} alt="f" />
-            </button>
-          </div>
-        </div>
+        {recommendedGames.map((item, index) => {
+          return (
+            <div key={index} className={style.description}>
+              <div className={style.firstBlock}>
+                <img className={style.photo} src={item.photo} alt="d" />
+                <p className={style.name}>{item.name}</p>
+                <p className={style.titleCard}>{item.titleCard}</p>
+                <p className={style.text}>{item.text}</p>
+                <button className={style.onebtn}>
+                  {" "}
+                  Подробнее
+                  <img className={style.arrow} src={arrow} alt="f" />
+                </button>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
