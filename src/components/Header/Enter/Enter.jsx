@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import IconButton from "@material-ui/core/IconButton";
 import Visibility from "@material-ui/icons/Visibility";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -22,7 +22,6 @@ const Enter = ({
     password: "",
     showPassword: false,
   });
-  
 
   const handleEnter = () => {
     setEnterWindow(false);
@@ -36,7 +35,6 @@ const Enter = ({
   const handleEnterAccount = () => {
     setAccountWindow(true);
   };
-  
 
   const error = useSelector((state) => state.registrationReducer.error);
 
@@ -70,8 +68,8 @@ const Enter = ({
     if (error) {
       return <div>{error}</div>;
     }
- 
   };
+
   return (
     <div>
       <div className={style.mainDiv}>
@@ -112,7 +110,7 @@ const Enter = ({
                 Зарегистрироваться
               </button>
               <div className={style.errors}>{error}</div>
-              <button type="submit" onClick={() => handleEnterAccount()} >
+              <button type="submit" onClick={() => handleEnterAccount()}>
                 Войти
               </button>
             </div>

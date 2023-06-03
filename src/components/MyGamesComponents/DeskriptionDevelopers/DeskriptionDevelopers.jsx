@@ -6,7 +6,7 @@ function DeskriptionDevelopersComponent() {
     <div className={style.deskriptionDevelopers}>
           <p className={style.game}>игры</p>
           <p className={style.text}>
-            Toy.Stream сегодня — это команда из более 500 человек и офисы по
+            Pixell сегодня — это команда из более 500 человек и офисы по
             всему миру. Мы входим в топ-10 игровых разработчиков по установкам —
             общее количество загрузок перевалило за 2 млрд, а ежемесячная
             аудитория составляет более 250 млн игроков.

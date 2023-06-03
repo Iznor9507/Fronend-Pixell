@@ -15,7 +15,6 @@ import { useState } from "react";
 import PersonalAccountWindow from "./components/Header/PersonalAccount/PersonalAccountWindow";
 import Basket from "./pages/Basket/Basket";
 import MyFavoritesGames from "./pages/Games/MyGames/myGame";
-// import Basket from "./pages/Basket/Basket";
 
 function App() {
   const [enterWindow, setEnterWindow] = useState(false);
@@ -26,11 +25,8 @@ function App() {
     <div className={style.app}>
       <Header
         setAccountWindow={setAccountWindow}
-        accountWindow={setEnterWindow}
-        enterWindow={enterWindow}
-        setEnterWindow={setEnterWindow}
-        registration={registration}
         setRegistration={setRegistration}
+        setEnterWindow={setEnterWindow}
       />
       {enterWindow ? (
         <div className={style.enterWindow}>
@@ -47,12 +43,8 @@ function App() {
       {registration ? (
         <div className={style.enterWindow}>
           <Registration
-            setAccountWindow={setAccountWindow}
-            accountWindow={setEnterWindow}
-            enterWindow={enterWindow}
-            setEnterWindow={setEnterWindow}
-            registration={registration}
             setRegistration={setRegistration}
+            setEnterWindow={setEnterWindow}
           />
         </div>
       ) : null}
@@ -69,111 +61,14 @@ function App() {
         </div>
       ) : null}
       <Routes>
-        <Route
-          path="/"
-          element={
-            <MainPage
-              setAccountWindow={setAccountWindow}
-              accountWindow={setEnterWindow}
-              enterWindow={enterWindow}
-              setEnterWindow={setEnterWindow}
-              registration={registration}
-              setRegistration={setRegistration}
-            />
-          }
-        />
-        <Route
-          path="/games"
-          element={
-            <GamePages
-              setAccountWindow={setAccountWindow}
-              accountWindow={setEnterWindow}
-              enterWindow={enterWindow}
-              setEnterWindow={setEnterWindow}
-              registration={registration}
-              setRegistration={setRegistration}
-            />
-          }
-        />
-        <Route
-          path="/compain"
-          element={
-            <AboutCompany
-              setAccountWindow={setAccountWindow}
-              accountWindow={setEnterWindow}
-              enterWindow={enterWindow}
-              setEnterWindow={setEnterWindow}
-              registration={registration}
-              setRegistration={setRegistration}
-            />
-          }
-        />
-        <Route
-          path="/career"
-          element={
-            <VacancyMain
-              setAccountWindow={setAccountWindow}
-              accountWindow={setEnterWindow}
-              enterWindow={enterWindow}
-              setEnterWindow={setEnterWindow}
-              registration={registration}
-              setRegistration={setRegistration}
-            />
-          }
-        />
-        <Route
-          path="/contacts"
-          element={
-            <Contacts
-              setAccountWindow={setAccountWindow}
-              accountWindow={setEnterWindow}
-              enterWindow={enterWindow}
-              setEnterWindow={setEnterWindow}
-              registration={registration}
-              setRegistration={setRegistration}
-            />
-          }
-        />
-        <Route
-          path="/aboutVacancy/:id"
-          element={
-            <AboutVacancy
-              setAccountWindow={setAccountWindow}
-              accountWindow={setEnterWindow}
-              enterWindow={enterWindow}
-              setEnterWindow={setEnterWindow}
-              registration={registration}
-              setRegistration={setRegistration}
-            />
-          }
-        />
-        <Route
-          path="/games/:gameId"
-          element={
-            <AboutGame
-              setAccountWindow={setAccountWindow}
-              accountWindow={setEnterWindow}
-              enterWindow={enterWindow}
-              setEnterWindow={setEnterWindow}
-              registration={registration}
-              setRegistration={setRegistration}
-            />
-          }
-        />
-        <Route
-          path="/basket"
-          element={
-            <Basket
-              setAccountWindow={setAccountWindow}
-              accountWindow={setEnterWindow}
-              enterWindow={enterWindow}
-              setEnterWindow={setEnterWindow}
-              registration={registration}
-              setRegistration={setRegistration}
-            />
-          }
-        />
-
+        <Route path="/" element={<MainPage />} />
+        <Route path="/games" element={<GamePages />} />
+        <Route path="/compain" element={<AboutCompany />} />
+        <Route path="/career" element={<VacancyMain />} />
+        <Route path="/contacts" element={<Contacts />} />
+        <Route path="/aboutVacancy/:id" element={<AboutVacancy />} />
+        <Route path="/games/:gameId" element={<AboutGame />} />
+        <Route path="/basket" element={<Basket />} />
         <Route path="/account" element={<PersonalAccountWindow />} />
         <Route path="mygames" element={<MyFavoritesGames />} />
       </Routes>

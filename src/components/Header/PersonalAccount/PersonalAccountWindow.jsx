@@ -23,18 +23,19 @@ const PersonalAccountWindow = ({
   
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    dispatch(getUsers())
-  }, [dispatch])
+  // useEffect(() => {
+  //   dispatch(getUsers())
+  // }, [dispatch])
   
   const userID = useSelector((state) => state?.registrationReducer?.userID?.id);
-  const users = useSelector(state => state.registrationReducer.users)
+  const users = useSelector(state => state?.registrationReducer?.users)
   if(!users) {
     return 'Loading...'
   }
-  const currentUser = users?.find(item => item?._id === userID)
-  console.log("USER", currentUser);
-console.log(userID);
+  // state?.registrationReducer?.userID?.id
+  const currentUser = users.find(item => item?._id === userID)
+  // console.log("USER", currentUser);
+// console.log(userID);
 
   
 

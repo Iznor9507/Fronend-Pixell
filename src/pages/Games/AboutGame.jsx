@@ -156,13 +156,13 @@ const AboutGame = () => {
         </div>
 
         <div className={style.buy}>
-          <p className={style.price_game}>
+          <div className={style.price_game}>
             {promoText === promos.map((item) => item.text).join("") ? (
-              <div>{discountPrice}</div>
+              <p>{discountPrice}</p>
             ) : (
-              <div className={style.game_price}>{game?.price}</div>
+              <p className={style.game_price}>{game?.price}</p>
             )}
-          </p>
+          </div>
           <button onClick={() => addToCart()} className={style.but_buy}>
             Добавить в корзину
           </button>
@@ -176,7 +176,7 @@ const AboutGame = () => {
           {game?.images?.map((item, index) => {
             if (index !== 0) {
               return (
-                <Carousel.Item key={item}>
+                <Carousel.Item key={index}>
                   <img
                     src={`http://localhost:3001/${item}`}
                     alt="img"

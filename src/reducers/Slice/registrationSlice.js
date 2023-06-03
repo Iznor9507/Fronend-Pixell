@@ -17,7 +17,6 @@ function parseJwt(token) {
     return JSON.parse(jsonPayload);
   }
 }
-
 const initialState = {
   error: null,
   signUp: false,
@@ -25,8 +24,7 @@ const initialState = {
   token: localStorage.getItem("token"),
   id: localStorage.getItem("id"),
   userID: parseJwt(localStorage.getItem("token")),
-  users: []
-
+  users: [],
 };
 
 export const authSignUp = createAsyncThunk(
@@ -46,16 +44,14 @@ export const authSignUp = createAsyncThunk(
       }
       return json;
     } catch (error) {
-      thunkAPI.rejectWithValue(error);
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
 
-
 export const addMoney = createAsyncThunk(
   "user/add-money",
   async (walletAmount, thunkAPI) => {
-
     try {
       const res = await fetch("http://localhost:3001/users/walley", {
         method: "PATCH",
@@ -71,9 +67,8 @@ export const addMoney = createAsyncThunk(
       }
 
       return json;
-
     } catch (error) {
-      thunkAPI.rejectWithValue(error);
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
@@ -89,33 +84,36 @@ export const authSignIn = createAsyncThunk(
         },
         body: JSON.stringify({ nickName, email, password }),
       });
+
       const token = await res.json();
+      
       if (token.error) {
         return thunkAPI.rejectWithValue(token.error);
       }
       localStorage.setItem("token", token.token);
       localStorage.setItem("id", token.id);
-
+      
       return token;
     } catch (error) {
-      thunkAPI.rejectWithValue(error);
+      return thunkAPI.rejectWithValue({ message: "Ошибка при входе", error });
     }
   }
 );
 
-export const getUsers = createAsyncThunk(
-  "users/fetch",
-  async (_, thunkAPI) => {
-    try {
-      const res = await fetch("http://localhost:3001/users")
-      const users = await res.json();
-     
-      return users;
-    } catch (error) {
-      thunkAPI.rejectWithValue(error);
-    }
-  }
-);
+
+// export const getUsers = createAsyncThunk("users/fetch", async (_, thunkAPI) => {
+//   try {
+//     const res = await fetch("http://localhost:3001/users");
+//     const users = await res.json();
+
+//     return users;
+//   } catch (error) {
+//     return thunkAPI.rejectWithValue({
+//       message: "Ошибка при получении пользователей",
+//       error,
+//     });
+//   }
+// });
 
 const registrationSlice = createSlice({
   name: "registration",
@@ -123,6 +121,19 @@ const registrationSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+    .addCase(authSignIn.fulfilled, (state, action) => {
+      state.signIn = false;
+      state.error = null;
+      state.token = action.payload.token;
+
+    })
+      .addCase(authSignIn.pending, (state) => {
+        state.signIn = true;
+      })
+      .addCase(authSignIn.rejected, (state, action) => {
+        state.signIn = false;
+        state.error = action.payload;
+      })
       .addCase(authSignUp.pending, (state) => {
         state.signUp = true;
       })
@@ -134,24 +145,12 @@ const registrationSlice = createSlice({
         state.signUp = false;
         state.error = null;
       })
-      .addCase(authSignIn.pending, (state) => {
-        state.signIn = true;
-      })
-      .addCase(authSignIn.rejected, (state, action) => {
-        state.signIn = false;
-        state.error = action.payload;
-      })
-      .addCase(authSignIn.fulfilled, (state, action) => {
-        state.signIn = false;
-        state.error = null;
-        state.token = action.payload;
-      })
       .addCase(addMoney.fulfilled, (state, action) => {
-        state.userID.wallet = action.payload.walletAmount
+        state.userID.wallet = action.payload.walletAmount;
       })
-      .addCase(getUsers.fulfilled, (state, action) => {
-        state.users = action.payload
-      })
+      // .addCase(getUsers.fulfilled, (state, action) => {
+      //   state.users = action.payload;
+      // });
   },
 });
 

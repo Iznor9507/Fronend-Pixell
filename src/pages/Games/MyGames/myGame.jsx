@@ -12,7 +12,7 @@ const MyFavoritesGames = () => {
   const myFavorites = useSelector((state) => state.favoriteReducer.favourites);
   const arrayFavorite = myFavorites.map((item) => item?.favourites);
 
-  console.log(arrayFavorite);
+  
 
   useEffect(() => {
     dispatch(fetchFavorite());
