@@ -83,7 +83,7 @@ const AboutVacancy = () => {
         >
           <div className={style.centerBlockRespond}>
             <h1 className={style.titleRespond}>
-              НАПИШИТЕ <br /> НАМ
+              НАПИШИТЕ <br />НАМ
             </h1>
 
             <div className={style.blockInp1}>
