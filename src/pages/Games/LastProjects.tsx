@@ -42,7 +42,7 @@ const LastProjects = () => {
           </div>
         </div>
       </div>
-      
+      {/* end */}
 
       <div className={style.firstBlockData}>
         {recommendedGames.map((item, index) => {
