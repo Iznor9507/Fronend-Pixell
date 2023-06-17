@@ -1,7 +1,12 @@
 import style from "./AcceptedWindow.module.scss";
 import logo from "../../../pages/Vacancy/images/Group.png";
 
-function AcceptedWindow({ acceptedWindow, setAcceptedWindow }) {
+interface acceptedWindow {
+  setAcceptedWindow: React.Dispatch<React.SetStateAction<boolean>>;
+  acceptedWindow: boolean;
+}
+
+function AcceptedWindow ({ acceptedWindow, setAcceptedWindow }: acceptedWindow) {
   const handleClickCloseWindow = () => {
     setAcceptedWindow(false);
   };

@@ -6,13 +6,16 @@ import { fetchGames } from "../../reducers/Slice/GamesList";
 import styles from "../Basket/Basket.module.scss";
 import { useAppDispatch, useAppSelector } from "../../reducers/store/hookRedux";
 
+
+
+
 const Basket = () => {
   const dispatch = useAppDispatch();
 
-  const basket = useAppSelector((state) => state.basketReducer.basket);
+  const basket  = useAppSelector((state) => state.basketReducer.basket);
   const products = useAppSelector((state) => state.gameReducer.game);
 
-  const totalPrice = basket?.products?.reduce((acc, item) => {
+  const totalPrice: number = basket?.products?.reduce((acc, item) => {
     return acc + item?.price;
   }, 0);
 

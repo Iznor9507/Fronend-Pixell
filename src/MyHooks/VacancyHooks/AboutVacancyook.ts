@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 
 import { useParams } from "react-router-dom";
 import { fetchVacancy } from "../../reducers/Slice/vacancySlice";
