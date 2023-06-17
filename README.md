@@ -41,10 +41,3 @@ npm i
 npm start
 ```
 
-### Работали над проектом:
-
-1. **[Askhab](https://github.com/Askhab39)**
-2. **[Deni](https://github.com/remcode404)**
-3. **[Iznaur](https://github.com/Iznor9507)**
-4. **[Adam](https://github.com/AdamTsurov)**
-5. **[Malik](https://github.com/Mugattu)**
